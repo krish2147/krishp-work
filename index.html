@@ -111,7 +111,6 @@ a{color:inherit}
 .go svg{width:16px; height:16px; transition:transform .3s var(--ease)}
 .go:hover svg{transform:translate(3px,-3px)}
 .pending{display:inline-flex; align-items:center; gap:.5rem; color:var(--smoke); font-size:.95rem}
-.ctas{display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.75rem}
 .pending::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--c)}
 
 /* frames */
@@ -130,7 +129,7 @@ a{color:inherit}
 .plate--phone .shot{order:-1}
 
 @media (max-width:860px){
-  .plate,.plate--phone{grid-template-columns:minmax(0,1fr)}
+  .plate,.plate--phone{grid-template-columns:1fr}
   .plate .shot,.plate--phone .shot{order:-1}
 }
 
@@ -251,10 +250,7 @@ a{color:inherit}
         <div><dt>Client</dt><dd>Aark International School, Vadodara</dd></div>
         <div><dt>Status</dt><dd>In progress</dd></div>
       </dl>
-      <div class="ctas">
-        <span class="pending">Launching soon</span>
-        <a class="go" href="https://aark-international-school.vercel.app/" target="_blank" rel="noopener">See the preview <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
-      </div>
+      <span class="pending">Launching soon</span>
     </div>
   </article>
 
