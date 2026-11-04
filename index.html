@@ -163,6 +163,7 @@ a{color:inherit}
 }
 .sheet p{flex:1}
 .sheet button{background:none; border:0; color:var(--smoke); font:500 .9rem var(--body); min-height:44px; padding:0 .5rem; cursor:pointer}
+.sheet button.primary{color:var(--gold); font-weight:700}
 .toast{position:fixed; left:50%; bottom:calc(1.5rem + env(safe-area-inset-bottom)); transform:translate(-50%,1rem); opacity:0; z-index:30;
   background:var(--paper); color:#000; padding:.7rem 1.1rem; border-radius:999px; font-weight:500; font-size:.9rem; transition:.3s var(--ease); pointer-events:none}
 .toast.on{opacity:1; transform:translate(-50%,0)}
@@ -320,6 +321,11 @@ a{color:inherit}
   <p>To install: tap <b>Share</b> in Safari, then <b>Add to Home Screen</b>.</p>
   <button type="button" id="ios-close">Close</button>
 </div>
+<div class="sheet" id="update-sheet" role="dialog" aria-label="Update available" hidden>
+  <p>A new version of this page is ready.</p>
+  <button type="button" class="primary" id="update-now">Update</button>
+  <button type="button" id="update-later">Later</button>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -355,7 +361,37 @@ a{color:inherit}
   });
   document.getElementById('ios-close').addEventListener('click', () => document.getElementById('ios-hint').hidden = true);
 
-  if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('/work/sw.js', { scope: '/work/' }).catch(() => {}));
+  // Offer the new version instead of swapping it in silently. An installed app has
+  // no reload button, so this is the only way in for someone who added it to the home screen.
+  if ('serviceWorker' in navigator) addEventListener('load', async () => {
+    const sheet = document.getElementById('update-sheet');
+    const hadController = !!navigator.serviceWorker.controller;
+    let waiting = null, reloading = false;
+    const offer = w => { waiting = w; sheet.hidden = false; };
+    document.getElementById('update-later').addEventListener('click', () => { sheet.hidden = true; });
+    document.getElementById('update-now').addEventListener('click', () => {
+      sheet.hidden = true; toast('Updating\u2026');
+      if (waiting) waiting.postMessage('SKIP_WAITING'); else location.reload();
+    });
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController || reloading) return;
+      reloading = true; location.reload();
+    });
+    let reg;
+    try { reg = await navigator.serviceWorker.register('/work/sw.js', { scope: '/work/' }); } catch (_) { return; }
+    if (reg.waiting && hadController) offer(reg.waiting);
+    reg.addEventListener('updatefound', () => {
+      const fresh = reg.installing;
+      if (!fresh) return;
+      fresh.addEventListener('statechange', () => {
+        if (fresh.state === 'installed' && navigator.serviceWorker.controller) offer(fresh);
+      });
+    });
+    // Look for a new version each time the app is brought back up, and hourly while open.
+    const check = () => { if (!document.hidden) reg.update().catch(() => {}); };
+    document.addEventListener('visibilitychange', check);
+    setInterval(check, 36e5);
+  });
 })();
 </script>
 </body>

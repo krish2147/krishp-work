@@ -1,4 +1,6 @@
 // Offline support for the work page. Bump VERSION whenever the page or images change.
+// A new version waits until the page says so, so the visitor is offered the update
+// instead of being switched over mid-visit.
 const VERSION = 'work-v1';
 const CORE = [
   '/work/',
@@ -14,7 +16,12 @@ const CORE = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)));
+});
+
+// The page asks for the swap when the visitor taps Update.
+self.addEventListener('message', e => {
+  if (e.data === 'SKIP_WAITING') self.skipWaiting();
 });
 
 self.addEventListener('activate', e => {
