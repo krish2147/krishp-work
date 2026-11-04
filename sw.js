@@ -1,13 +1,10 @@
 // Offline support for the work page. Bump VERSION whenever the page or images change.
-const VERSION = 'work-v2';
+const VERSION = 'work-v1';
 const CORE = [
   '/work/',
   '/work/manifest.webmanifest',
   '/work/icon-192.png',
   '/work/icon-512.png',
-  '/work/arena.jpg',
-  '/work/vr.jpg',
-  '/work/khemji.jpg',
   '/reg.jpeg',
   '/kisansetu-logo.jpg',
   '/aark.jpeg',
