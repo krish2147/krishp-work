@@ -111,6 +111,7 @@ a{color:inherit}
 .go svg{width:16px; height:16px; transition:transform .3s var(--ease)}
 .go:hover svg{transform:translate(3px,-3px)}
 .pending{display:inline-flex; align-items:center; gap:.5rem; color:var(--smoke); font-size:.95rem}
+.ctas{display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.75rem}
 .pending::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--c)}
 
 /* frames */
@@ -129,7 +130,7 @@ a{color:inherit}
 .plate--phone .shot{order:-1}
 
 @media (max-width:860px){
-  .plate,.plate--phone{grid-template-columns:1fr}
+  .plate,.plate--phone{grid-template-columns:minmax(0,1fr)}
   .plate .shot,.plate--phone .shot{order:-1}
 }
 
@@ -195,10 +196,13 @@ a{color:inherit}
       <li style="--i:0"><a href="#championship" style="--c:#4C8DFF"><span class="nm">Swimming Championship</span><span class="what"><span class="st">Live</span> 400+ swimmers registered</span></a></li>
       <li style="--i:1"><a href="#kisansetu" style="--c:#5DBB63"><span class="nm">KisanSetu</span><span class="what"><span class="st">Prototype</span> Voice platform for farmers</span></a></li>
       <li style="--i:2"><a href="#aark" style="--c:#E06A3B"><span class="nm">Aark International</span><span class="what"><span class="st">In progress</span> School website</span></a></li>
-      <li style="--i:3"><a href="#clinic" style="--c:#C9A46A"><span class="nm">Kashtbhanjan</span><span class="what"><span class="st">Live</span> Clinic website and ads</span></a></li>
-      <li style="--i:4"><a href="#sams" style="--c:#2BB3E0"><span class="nm">SAMS</span><span class="what"><span class="st">In progress</span> Club membership system</span></a></li>
-      <li style="--i:5"><a href="#turned18" style="--c:#2F6BFF"><span class="nm">Turned 18</span><span class="what"><span class="st">Live</span> Civic guidance platform</span></a></li>
-      <li style="--i:6"><a href="#more" style="--c:var(--gold)"><span class="nm">And more</span><span class="what">Club site, coach brand, data report</span></a></li>
+      <li style="--i:3"><a href="#arena" style="--c:#9BE23A"><span class="nm">Aark Arena</span><span class="what"><span class="st">Live</span> Cricket nets and academy</span></a></li>
+      <li style="--i:4"><a href="#clinic" style="--c:#C9A46A"><span class="nm">Kashtbhanjan</span><span class="what"><span class="st">Live</span> Clinic website and ads</span></a></li>
+      <li style="--i:5"><a href="#vr" style="--c:#4FA3F0"><span class="nm">VR Cleaning</span><span class="what"><span class="st">Live</span> Cleaning service, two languages</span></a></li>
+      <li style="--i:6"><a href="#khemji" style="--c:#F2BF3A"><span class="nm">Khemji Caf&eacute;</span><span class="what"><span class="st">Live</span> Caf&eacute; menu and directions</span></a></li>
+      <li style="--i:7"><a href="#sams" style="--c:#2BB3E0"><span class="nm">SAMS</span><span class="what"><span class="st">In progress</span> Club membership system</span></a></li>
+      <li style="--i:8"><a href="#turned18" style="--c:#2F6BFF"><span class="nm">Turned 18</span><span class="what"><span class="st">Live</span> Civic guidance platform</span></a></li>
+      <li style="--i:9"><a href="#more" style="--c:var(--gold)"><span class="nm">And more</span><span class="what">Club site, coach brand, password vault, data report</span></a></li>
     </ol>
   </section>
 
@@ -246,7 +250,30 @@ a{color:inherit}
         <div><dt>Client</dt><dd>Aark International School, Vadodara</dd></div>
         <div><dt>Status</dt><dd>In progress</dd></div>
       </dl>
-      <span class="pending">Launching soon</span>
+      <div class="ctas">
+        <span class="pending">Launching soon</span>
+        <a class="go" href="https://aark-international-school.vercel.app/" target="_blank" rel="noopener">See the preview <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      </div>
+    </div>
+  </article>
+
+  <article class="plate" id="arena" data-tone="#0a1208" style="--c:#9BE23A" aria-labelledby="t-arena">
+    <div class="shot">
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>three-60-aark.vercel.app</span></div>
+        <img src="/work/arena.jpg" width="1600" height="788" alt="Aark Arena home page showing floodlit indoor cricket nets over striped turf" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div>
+      <h2 id="t-arena">Aark Arena</h2>
+      <p class="result">Covered, floodlit cricket nets that fill up <strong>over WhatsApp</strong>.</p>
+      <p class="desc">A site for the arena and the Three60 Cricket Academy in Sevasi. The hall, the coaching, timings and prices run down one scroll, and booking a slot or calling is never more than a tap away.</p>
+      <dl class="facts">
+        <div><dt>Client</dt><dd>Aark Arena, Vadodara</dd></div>
+        <div><dt>Status</dt><dd>Live</dd></div>
+        <div class="wide"><dt>Home to</dt><dd>Three60 Cricket Academy</dd></div>
+      </dl>
+      <a class="go" href="https://three-60-aark.vercel.app/" target="_blank" rel="noopener">Visit the live site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
     </div>
   </article>
 
@@ -261,6 +288,40 @@ a{color:inherit}
         <div><dt>Built with</dt><dd>React, Tailwind CSS, Node.js</dd></div>
       </dl>
       <a class="go" href="https://khastbhanjan-chiropractic.vercel.app/" target="_blank" rel="noopener">Visit the live site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+    </div>
+  </article>
+
+  <article class="plate" id="vr" data-tone="#041020" style="--c:#4FA3F0" aria-labelledby="t-vr">
+    <div class="shot">
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>vr-cleaning-services-rust.vercel.app</span></div>
+        <img src="/work/vr.jpg" width="1600" height="788" alt="VR Cleaning Services home page with 2BHK deep clean pricing" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div>
+      <h2 id="t-vr">VR Cleaning Services</h2>
+      <p class="result">A cleaning business that reads <strong>in English and Gujarati</strong>.</p>
+      <p class="desc">Home, office, shop, society and pool cleaning set out with real packages and real prices, so a customer knows what a 2BHK deep clean costs before they ever pick up the phone. The whole site switches language in one tap.</p>
+      <dl class="facts">
+        <div><dt>Client</dt><dd>VR Cleaning Services, Vadodara</dd></div>
+        <div><dt>Status</dt><dd>Live</dd></div>
+        <div class="wide"><dt>Languages</dt><dd>English and Gujarati, switchable</dd></div>
+      </dl>
+      <a class="go" href="https://vr-cleaning-services-rust.vercel.app/" target="_blank" rel="noopener">Visit the live site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+    </div>
+  </article>
+
+  <article class="plate plate--phone" id="khemji" data-tone="#0a1d14" style="--c:#F2BF3A" aria-labelledby="t-khemji">
+    <div class="shot"><div class="phone" style="--ar:640/1175"><img src="/work/khemji.jpg" width="640" height="1175" alt="Khemji Caf&eacute; site on mobile, a cold coffee behind a Get directions button" loading="lazy" decoding="async"></div></div>
+    <div>
+      <h2 id="t-khemji">Khemji Caf&eacute;</h2>
+      <p class="result">A neighbourhood caf&eacute;, built to <strong>get people through the door</strong>.</p>
+      <p class="desc">The menu, the prices and the hours for the caf&eacute; in Bhayli, with every section leading back to the same button: directions. Cold coffee from &#8377;100, tea for &#8377;20, open till 1 AM.</p>
+      <dl class="facts">
+        <div><dt>Client</dt><dd>Khemji Caf&eacute;, Bhayli, Vadodara</dd></div>
+        <div><dt>Status</dt><dd>Live</dd></div>
+      </dl>
+      <a class="go" href="https://khemji.vercel.app/" target="_blank" rel="noopener">Visit the live site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
     </div>
   </article>
 
@@ -298,6 +359,7 @@ a{color:inherit}
     <ul class="rows">
       <li><a href="https://krish2147.github.io/Baroda-swimming-front/" target="_blank" rel="noopener"><span class="t">Baroda Swim Front</span><span class="d">Registration, payments, renewals, event updates and membership for a swimming club.</span><span class="k">Visit</span></a></li>
       <li><a href="https://sanjay-kumar-swim.vercel.app/" target="_blank" rel="noopener"><span class="t">Coach portfolio</span><span class="d">Personal brand site for a swimming coach.</span><span class="k">Visit</span></a></li>
+      <li><a href="https://keyring-lake.vercel.app/" target="_blank" rel="noopener"><span class="t">Keyring</span><span class="d">A private password vault. Encrypted on your own device, works offline.</span><span class="k">Visit</span></a></li>
       <li><div><span class="t">AI Capability Report</span><span class="d">A two-page data visualisation report.</span><span class="k">Report</span></div></li>
     </ul>
   </section>
