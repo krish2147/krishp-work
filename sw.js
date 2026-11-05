@@ -1,10 +1,18 @@
 // Offline support for the work page. Bump VERSION whenever the page or images change.
-const VERSION = 'work-v1';
+// A new version waits until the page says so, so the visitor is offered the update
+// instead of being switched over mid-visit.
+const VERSION = 'work-v2';
 const CORE = [
   '/work/',
   '/work/manifest.webmanifest',
   '/work/icon-192.png',
   '/work/icon-512.png',
+  '/work/cover1.jpg',
+  '/work/cover2.jpg',
+  '/work/cover3.jpg',
+  '/work/cover4.jpg',
+  '/work/cover5.jpg',
+  '/work/cover6.jpg',
   '/reg.jpeg',
   '/kisansetu-logo.jpg',
   '/aark.jpeg',
@@ -14,7 +22,12 @@ const CORE = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)));
+});
+
+// The page asks for the swap when the visitor taps Update.
+self.addEventListener('message', e => {
+  if (e.data === 'SKIP_WAITING') self.skipWaiting();
 });
 
 self.addEventListener('activate', e => {
