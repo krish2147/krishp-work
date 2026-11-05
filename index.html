@@ -113,55 +113,6 @@ a{color:inherit}
 .pending{display:inline-flex; align-items:center; gap:.5rem; color:var(--smoke); font-size:.95rem}
 .pending::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--c)}
 
-/* ── The crate: flip through the projects ─ */
-.crate{padding:clamp(2.5rem,7vh,4.5rem) var(--pad) clamp(2rem,5vh,3.5rem); border-top:1px solid var(--line)}
-.crate .scene{
-  position:relative; height:min(62vh,460px); perspective:1000px; perspective-origin:50% 50%;
-  overflow:hidden; touch-action:pan-y; cursor:grab;
-}
-.crate .scene.dragging{cursor:grabbing}
-.crate .rack{position:absolute; inset:0; transform-style:preserve-3d; transform:translateZ(-40px)}
-.crate .case{
-  position:absolute; left:50%; top:50%; width:var(--w); height:var(--w);
-  margin:calc(var(--w) / -2) 0 0 calc(var(--w) / -2);
-  transform-style:preserve-3d; will-change:transform; --w:min(44vw,34vh,260px);
-}
-.crate .face{position:absolute; inset:0; border-radius:3px; backface-visibility:hidden}
-.crate .cover{
-  overflow:hidden; transform:translateZ(6px); background:#08080a;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.14), 0 30px 60px -20px rgba(0,0,0,.9);
-  display:flex; flex-direction:column; justify-content:space-between; padding:clamp(.6rem,1.6vw,1rem);
-}
-.crate .art{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-.crate .scrim{position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.12) 24%, rgba(0,0,0,.05) 44%, rgba(0,0,0,.86) 100%)}
-.crate .cover::after{content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:screen;
-  background:linear-gradient(118deg, rgba(255,255,255,.26) 0%, rgba(255,255,255,.04) 24%, transparent 44%, rgba(255,255,255,.1) 72%, transparent 88%)}
-.crate .cat{position:relative; font:500 .62rem/1 var(--body); letter-spacing:.16em; text-transform:uppercase; color:rgba(242,241,236,.74)}
-.crate .foot{position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:.3rem}
-.crate .cover h3{font:400 clamp(1.25rem,3.4vw,2rem)/.92 var(--display); letter-spacing:.012em;
-  text-wrap:balance; text-shadow:0 2px 18px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.9)}
-.crate .cover .sub{font-size:.66rem; line-height:1.3; color:rgba(242,241,236,.78)}
-.crate .cover .st{display:inline-flex; align-items:center; gap:.35rem; font:500 .6rem/1 var(--body);
-  letter-spacing:.12em; text-transform:uppercase; color:#fff}
-.crate .cover .st::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--c); box-shadow:0 0 8px var(--c)}
-.crate .back{transform:translateZ(-6px) rotateY(180deg);
-  background:linear-gradient(200deg,#1b1b1e,#0a0a0c); box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
-.crate .spine{position:absolute; top:0; left:0; width:12px; height:100%; transform:rotateY(-90deg); transform-origin:left center;
-  background:linear-gradient(90deg,#121214,#232327 42%,#0e0e10); box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
-  display:flex; align-items:center; justify-content:center}
-.crate .spine i{width:3px; height:62%; border-radius:2px; background:var(--c); opacity:.9}
-.crate-cap{display:flex; align-items:center; gap:1rem 1.5rem; flex-wrap:wrap; margin-top:1.5rem}
-.crate-cap .num{font:500 .72rem/1 var(--body); letter-spacing:.14em; color:var(--smoke)}
-.crate-cap .num b{color:var(--paper); font-weight:500}
-.crate-cap h3{font:400 clamp(1.6rem,4.5vw,2.5rem)/.95 var(--display); letter-spacing:.01em; flex:1 1 14rem; min-width:0}
-.crate-nav{display:flex; gap:.4rem; margin-left:auto}
-.crate-nav button{width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
-  background:transparent; color:var(--paper); cursor:pointer; font-size:1rem; line-height:1}
-.crate-nav button:hover:not(:disabled){border-color:rgba(242,241,236,.45)}
-.crate-nav button:disabled{opacity:.3; cursor:default}
-@media (max-width:640px){ .crate-cap h3{flex-basis:100%} }
-
 /* frames */
 .shot{position:relative}
 .browser{border-radius:14px; background:var(--graphite); padding:0 6px 6px; box-shadow:0 40px 80px -40px rgba(0,0,0,.9), 0 0 0 1px var(--line)}
@@ -250,22 +201,6 @@ a{color:inherit}
       <li style="--i:5"><a href="#turned18" style="--c:#2F6BFF"><span class="nm">Turned 18</span><span class="what"><span class="st">Live</span> Civic guidance platform</span></a></li>
       <li style="--i:6"><a href="#more" style="--c:var(--gold)"><span class="nm">And more</span><span class="what">Club site, coach brand, data report</span></a></li>
     </ol>
-  </section>
-
-  <section class="crate" id="crate" data-tone="#05050a" aria-labelledby="t-crate">
-    <h2 id="t-crate" class="sr">Flip through the projects</h2>
-    <div class="scene" id="crate-scene">
-      <div class="rack" id="crate-rack"></div>
-    </div>
-    <div class="crate-cap">
-      <p class="num"><b id="crate-i">01</b> / <span id="crate-n">06</span></p>
-      <h3 id="crate-name">&mdash;</h3>
-      <a class="go" id="crate-go" href="#championship">See the project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
-      <nav class="crate-nav" aria-label="Flip through projects">
-        <button type="button" id="crate-prev" aria-label="Previous project">&#8592;</button>
-        <button type="button" id="crate-next" aria-label="Next project">&#8594;</button>
-      </nav>
-    </div>
   </section>
 
   <article class="plate" id="championship" data-tone="#050a14" style="--c:#4C8DFF" aria-labelledby="t-champ">
@@ -457,119 +392,6 @@ a{color:inherit}
     document.addEventListener('visibilitychange', check);
     setInterval(check, 36e5);
   });
-})();
-</script>
-
-<script>
-/* The crate. Drag sideways, tap a case, or use the arrows; the page still
-   scrolls normally, so the wheel is deliberately left alone. */
-(() => {
-  const P = [
-    { art:'cover1.jpg', cat:'BSF 001 \u00b7 2026',    short:'Swimming Championship', name:'Baroda Swimming Championship 2026', status:'Live',        c:'#4C8DFF', to:'#championship' },
-    { art:'cover2.jpg', cat:'KS 002 \u00b7 SIH 2026', short:'KisanSetu',             name:'KisanSetu',                        status:'Prototype',   c:'#5DBB63', to:'#kisansetu' },
-    { art:'cover3.jpg', cat:'AIS 003 \u00b7 Vadodara',short:'Aark International',    name:'Aark International School',        status:'In progress', c:'#E06A3B', to:'#aark' },
-    { art:'cover4.jpg', cat:'KC 004 \u00b7 Clinic',   short:'Kashtbhanjan',          name:'Kashtbhanjan Chiropractic',        status:'Live',        c:'#C9A46A', to:'#clinic' },
-    { art:'cover5.jpg', cat:'SAMS 005 \u00b7 Members',short:'SAMS',                  name:'SAMS',                             status:'In progress', c:'#2BB3E0', to:'#sams' },
-    { art:'cover6.jpg', cat:'T18 006 \u00b7 Civic',   short:'Turned 18',             name:'Turned 18',                        status:'Live',        c:'#2F6BFF', to:'#turned18' }
-  ];
-  const rack = document.getElementById('crate-rack'), scene = document.getElementById('crate-scene');
-  if (!rack || !scene) return;
-  const esc = t => t.replace(/[&<>"]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[m]));
-
-  rack.innerHTML = P.map((p, i) => `
-    <article class="case" data-i="${i}" style="--c:${p.c}" tabindex="0" role="button" aria-label="${esc(p.name)}, ${esc(p.status)}">
-      <div class="face cover">
-        <img class="art" src="${p.art}" alt="" loading="lazy" decoding="async">
-        <span class="scrim" aria-hidden="true"></span>
-        <span class="cat">${esc(p.cat)}</span>
-        <span class="foot">
-          <span class="st">${esc(p.status)}</span>
-          <h3>${esc(p.short)}</h3>
-          <span class="sub">${esc(p.name)}</span>
-        </span>
-      </div>
-      <div class="face back" aria-hidden="true"></div>
-      <div class="spine" aria-hidden="true"><i></i></div>
-    </article>`).join('');
-
-  const cases = [...rack.querySelectorAll('.case')];
-  const STEP_X = 58, STEP_Y = -34, STEP_Z = -78, LEAN = -42, FACE = -4, POP = 66;
-  const last = P.length - 1;
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const clamp = v => Math.max(0, Math.min(last, v));
-  let target = 0, pos = 0, raf = null;
-
-  function paint() {
-    for (let i = 0; i < cases.length; i++) {
-      const d = i - pos, a = Math.abs(d), back = d >= 0;
-      const near = Math.max(0, 1 - a), ease = near * near * (3 - 2 * near);
-      const x = back ? d * STEP_X : -a * STEP_X * 1.3;
-      const y = back ? d * STEP_Y : a * 52;
-      const z = back ? d * STEP_Z + ease * POP : a * 170;
-      const op = back ? 1 : Math.max(0, 1 - a * 1.15);
-      const el = cases[i];
-      el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,${z.toFixed(1)}px) rotateY(${(LEAN + (FACE - LEAN) * ease).toFixed(2)}deg)`;
-      el.style.filter = `brightness(${(1 - (back ? Math.min(.62, a * .15) : 0)).toFixed(3)})`;
-      el.style.opacity = op.toFixed(3);
-      el.style.pointerEvents = op < .25 ? 'none' : 'auto';
-    }
-  }
-  function tick() {
-    const gap = target - pos;
-    if (Math.abs(gap) < .0015) { pos = target; paint(); raf = null; return; }
-    pos += gap * .16; paint(); raf = requestAnimationFrame(tick);
-  }
-  const run = () => { if (reduce) { pos = target; paint(); return; } if (!raf) raf = requestAnimationFrame(tick); };
-
-  const iEl = document.getElementById('crate-i'), nameEl = document.getElementById('crate-name'),
-        goEl = document.getElementById('crate-go'), prev = document.getElementById('crate-prev'),
-        next = document.getElementById('crate-next');
-  document.getElementById('crate-n').textContent = String(P.length).padStart(2, '0');
-  let shown = -1;
-  function caption() {
-    const i = Math.round(target);
-    if (i === shown) return;
-    shown = i;
-    iEl.textContent = String(i + 1).padStart(2, '0');
-    nameEl.textContent = P[i].name;
-    goEl.setAttribute('href', P[i].to);
-    prev.disabled = i === 0; next.disabled = i === last;
-  }
-  const goTo = i => { target = clamp(i); run(); caption(); };
-  prev.addEventListener('click', () => goTo(Math.round(target) - 1));
-  next.addEventListener('click', () => goTo(Math.round(target) + 1));
-  cases.forEach((el, i) => {
-    el.addEventListener('click', () => { if (Math.round(target) === i) goEl.click(); else goTo(i); });
-    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo(i); } });
-  });
-  scene.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(Math.round(target) + 1); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(Math.round(target) - 1); }
-  });
-
-  // Horizontal drag flips; a mostly vertical drag is left to the page.
-  let id = null, x0 = 0, y0 = 0, t0 = 0, sideways = false;
-  scene.addEventListener('pointerdown', e => { id = e.pointerId; x0 = e.clientX; y0 = e.clientY; t0 = target; sideways = false; });
-  scene.addEventListener('pointermove', e => {
-    if (e.pointerId !== id) return;
-    const dx = e.clientX - x0, dy = e.clientY - y0;
-    if (!sideways) {
-      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-      if (Math.abs(dy) > Math.abs(dx)) { id = null; return; }
-      sideways = true; scene.classList.add('dragging');
-      try { scene.setPointerCapture(e.pointerId); } catch (_) {}
-    }
-    target = clamp(t0 - dx / 70); run(); caption();
-  });
-  const drop = e => {
-    if (e.pointerId !== id) return;
-    id = null;
-    if (sideways) { scene.classList.remove('dragging'); goTo(Math.round(pos)); }
-  };
-  scene.addEventListener('pointerup', drop);
-  scene.addEventListener('pointercancel', drop);
-
-  caption(); paint();
 })();
 </script>
 </body>
